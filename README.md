@@ -1,6 +1,6 @@
 # What is this
 
-The app is hosted at [http://kgoyal98-20210802014024-hostingbucket-dev.s3-website.us-east-2.amazonaws.com](http://kgoyal98-20210802014024-hostingbucket-dev.s3-website.us-east-2.amazonaws.com).
+The app is hosted at [http://kgoyal98-20210802014024-hostingbucket-function.s3-website.us-east-2.amazonaws.com](http://kgoyal98-20210802014024-hostingbucket-function.s3-website.us-east-2.amazonaws.com).
 
 This demonstrates how it is possible to use Amplify to list posts created by followed users in a single api request.
 
