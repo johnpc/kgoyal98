@@ -17,3 +17,7 @@ type UserFollow @model {
   user: User @connection(name: "UserFollowing")
   followee: User @connection(name: "UserFollowers")
 }
+
+type Query {
+  timeline: [Post] @function(name: "kgoyal98ce44dccd-dev")
+}

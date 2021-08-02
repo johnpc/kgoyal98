@@ -1,40 +1,28 @@
 import Amplify, {API, graphqlOperation} from "aws-amplify";
-import {getUser} from "./graphql/queries";
+import {timeline} from "./graphql/queries";
 import "./App.css";
 import awsconfig from "./aws-exports";
 import {useEffect, useState} from "react";
 Amplify.configure(awsconfig);
 
 function App() {
-  const [user, setUser] = useState();
+  const [posts, setTimeline] = useState();
   useEffect(() => {
     const setupState = async () => {
-      const result = await API.graphql(
-        graphqlOperation(getUser, {
-          id: "1f081f2f-b2b0-4204-b363-7f2bfba8493b",
-        })
-      );
-      setUser(result.data.getUser);
+      const result = await API.graphql(graphqlOperation(timeline));
+      console.log("res", result);
+      setTimeline(result.data.timeline);
     };
     setupState();
   }, []);
 
-  if (!user) return <>loading...</>;
+  if (!posts) return <>loading...</>
   return (
     <div className="App">
-      <p>hello {user.name}.</p>
       <p> Here are posts from the people you follow:</p>
-      {user.following.items.map((follow) => {
-        const contents = follow.followee.posts.items.map((post) => (
-          <p key={post.id}>{post.content}</p>
-        ));
-        return (
-          <>
-            {" "}
-            <h2>{follow.followee.name}</h2>{contents}
-          </>
-        );
-      })}
+      {posts.map((post) => (
+        <p key={post.id}>{post.content}</p>
+      ))}
     </div>
   );
 }

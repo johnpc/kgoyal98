@@ -1,6 +1,18 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const timeline = /* GraphQL */ `
+  query Timeline {
+    timeline {
+      id
+      content
+      user {
+        id
+        name
+      }
+    }
+  }
+`;
 export const getUser = /* GraphQL */ `
   query GetUser($id: ID!) {
     getUser(id: $id) {
@@ -11,17 +23,6 @@ export const getUser = /* GraphQL */ `
           id
           createdAt
           updatedAt
-          followee {
-            id
-            name
-            posts {
-              items {
-                id
-                content
-              }
-              nextToken
-            }
-          }
         }
         nextToken
       }
