@@ -1,0 +1,19 @@
+type User @model @aws_api_key {
+  id: ID!
+  name: String!
+  following: [UserFollow] @connection(name: "UserFollowing")
+  followers: [UserFollow] @connection(name: "UserFollowers")
+  posts: [Post] @connection(name: "UserPosts")
+}
+
+type Post @model {
+  id: ID!
+  content: String
+  user: User @connection(name: "UserPosts")
+}
+
+type UserFollow @model {
+  id: ID!
+  user: User @connection(name: "UserFollowing")
+  followee: User @connection(name: "UserFollowers")
+}
